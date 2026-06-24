@@ -12,6 +12,10 @@ const menuItems = [
     key: '/zustand',
     label: 'Zustand 状态管理 Demo',
   },
+  {
+    key: '/redux',
+    label: 'Redux 状态管理 Demo',
+  },
 ]
 
 export default function Sidebar() {

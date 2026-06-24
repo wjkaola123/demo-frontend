@@ -3,31 +3,38 @@
 ## Commands
 
 ```bash
-npm run dev       # start dev server on :80 (non-standard port)
+npm run dev       # vite dev server on :5173 (Docker overrides to :80)
 npm run build     # tsc -b && vite build (typecheck before bundle)
 npm run lint      # eslint .
-npm run preview   # vite preview
+npm run test      # vitest run (no tests written yet)
 ```
 
-## Tech stack
+## Stack
 
-React 19 · TypeScript 6.0 · Vite 8 · Tailwind CSS v4
+React 19 · TypeScript 6.0 · Vite 8 · Tailwind v4 · antd v6 · react-router-dom v7
 
 ## Architecture
 
-- `src/main.tsx` — entry, renders `<App />`
-- `src/App.tsx` — root component
-- `src/index.css` — Tailwind v4 via `@import "tailwindcss"`; global resets
+```
+src/
+├── main.tsx              entry — BrowserRouter → <App />
+├── App.tsx               antd Layout (Sider + Content) + Routes
+├── pages/                route-level page components (CrossLayerDemo)
+├── components/           reusable components (Sidebar)
+├── lib/                  pure logic (context.tsx, event-bus.ts)
+└── index.css             Tailwind v4 @import + @theme tokens
+```
+
+Cross-layer demo uses two communication patterns:
+- `src/lib/context.tsx` — React Context (AppProvider) for top-down shared state
+- `src/lib/event-bus.ts` — pub/sub EventBus for decoupled peer-to-peer messaging
 
 ## Gotchas
 
-- **Dev server binds `0.0.0.0:80`** — requires root or `sudo setcap 'cap_net_bind_service=+ep'` on Linux; Docker avoids this
-- **TypeScript `verbatimModuleSyntax` + `erasableSyntaxOnly`** — `import type` is required for type-only imports; no enum/namespace
-- **Tailwind v4** — uses `@import "tailwindcss"` in CSS (plugin approach), not the old v3 PostCSS plugin. `tailwind.config.js` still exists for IDE tooling but theme tokens live in `@theme {}` block
-
-## Conventions
-
-- **"启动服务"** → 执行 `docker compose up`
+- **TypeScript `verbatimModuleSyntax` + `erasableSyntaxOnly`** — `import type` required for type-only imports; no enum, namespace, or parameter properties
+- **Tailwind v4** — `@import "tailwindcss"` in CSS, not PostCSS plugin. Theme in `@theme {}` block. `tailwind.config.js` exists only for IDE tooling
+- **Path alias** — `@/` maps to `src/` (configured in tsconfig + vite.resolve.alias)
+- **antd v6** — Used for Layout/Sider/Menu only; no antd components in pages
 
 ## Docker
 
@@ -36,11 +43,7 @@ docker compose up         # dev with hot reload (mounts ./src)
 docker compose down
 ```
 
-Build target: `Dockerfile.dev` by default. Production uses `Dockerfile` (multi-stage → nginx:alpine).
-
-- `.dockerignore` excludes `node_modules`, `dist`, `.git`
-- `.env.docker` sets `VITE_API_BASE_URL` for container builds
-
-## Notice
-- 后端HTTP服务Host地址: http://localhost:8000
-- 后端WebSocket服务Host地址: ws://localhost:8000
+- Default: `Dockerfile.dev` (node:20-alpine, npm dev on :80)
+- Production: `Dockerfile` (multi-stage → nginx:alpine)
+- `VITE_API_BASE_URL` set via `.env.docker` for container builds
+- Backend at `http://localhost:8000` / `ws://localhost:8000`

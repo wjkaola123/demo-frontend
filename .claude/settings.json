@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -m http.server 8765)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8765/solar-system.html)",
+      "Skill(claude-api)",
+      "Skill(claude-api:*)",
+      "Bash(ls ~/.claude/skills/)",
+      "Read(//home/wj/.claude/skills/**)",
+      "Bash(npx skills *)",
+      "mcp__plugin_context7_context7__resolve-library-id"
+    ]
+  }
+}

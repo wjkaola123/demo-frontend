@@ -8,6 +8,10 @@ const menuItems = [
     key: '/',
     label: '跨层传递数据 Demo',
   },
+  {
+    key: '/zustand',
+    label: 'Zustand 状态管理 Demo',
+  },
 ]
 
 export default function Sidebar() {

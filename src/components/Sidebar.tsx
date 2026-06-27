@@ -20,6 +20,7 @@ const menuItems = [
     children: [
       { key: '/immer', label: 'useImmer Demo' },
       { key: '/external-store', label: 'useSyncExternalStore Demo' },
+      { key: '/transition', label: 'useTransition Demo' },
     ],
   },
   {

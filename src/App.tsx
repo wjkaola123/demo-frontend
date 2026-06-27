@@ -6,6 +6,7 @@ import ZustandDemo from './pages/ZustandDemo'
 import ReduxDemo from './pages/ReduxDemo'
 import ImmerDemo from './pages/ImmerDemo'
 import ExternalStoreDemo from './pages/ExternalStoreDemo'
+import TransitionDemo from './pages/TransitionDemo'
 
 const { Content } = Layout
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/redux" element={<ReduxDemo />} />
           <Route path="/immer" element={<ImmerDemo />} />
           <Route path="/external-store" element={<ExternalStoreDemo />} />
+          <Route path="/transition" element={<TransitionDemo />} />
         </Routes>
       </Content>
     </Layout>

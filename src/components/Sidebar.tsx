@@ -5,24 +5,30 @@ const { Sider } = Layout
 
 const menuItems = [
   {
-    key: '/',
-    label: '跨层传递数据 Demo',
+    key: 'group-libs',
+    type: 'group' as const,
+    label: '全局状态管理库',
+    children: [
+      { key: '/zustand', label: 'Zustand Demo' },
+      { key: '/redux', label: 'Redux Demo' },
+    ],
   },
   {
-    key: '/zustand',
-    label: 'Zustand 状态管理 Demo',
+    key: 'group-react',
+    type: 'group' as const,
+    label: 'React 原生 Hooks',
+    children: [
+      { key: '/immer', label: 'useImmer Demo' },
+      { key: '/external-store', label: 'useSyncExternalStore Demo' },
+    ],
   },
   {
-    key: '/redux',
-    label: 'Redux 状态管理 Demo',
-  },
-  {
-    key: '/immer',
-    label: 'Immer useImmer Demo',
-  },
-  {
-    key: '/external-store',
-    label: 'useSyncExternalStore Demo',
+    key: 'group-cross',
+    type: 'group' as const,
+    label: '跨层通信',
+    children: [
+      { key: '/', label: '跨层传递数据 Demo' },
+    ],
   },
 ]
 

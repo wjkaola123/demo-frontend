@@ -2,6 +2,7 @@ import { useState, useDeferredValue, useMemo, type ChangeEvent } from 'react'
 
 const ROWS = 100
 const COLS = 100
+const PREVIEW_ROWS = 10
 
 function computeColor(offset: number, row: number, col: number): string {
   const r = Math.sin(offset * 0.1 + row * 0.3 + col * 0.7) * 127 + 128
@@ -10,10 +11,10 @@ function computeColor(offset: number, row: number, col: number): string {
   return `rgb(${r | 0}, ${g | 0}, ${b | 0})`
 }
 
-function ColorGrid({ offset }: { offset: number }) {
+function ColorGrid({ offset, maxRows = ROWS }: { offset: number; maxRows?: number }) {
   const grid = useMemo(() => {
     const rows: React.ReactNode[] = []
-    for (let r = 0; r < ROWS; r++) {
+    for (let r = 0; r < maxRows; r++) {
       const cells: React.ReactNode[] = []
       for (let c = 0; c < COLS; c++) {
         cells.push(
@@ -35,7 +36,7 @@ function ColorGrid({ offset }: { offset: number }) {
       )
     }
     return rows
-  }, [offset])
+  }, [offset, maxRows])
 
   return <div className="flex flex-col">{grid}</div>
 }
@@ -58,7 +59,10 @@ function WithoutDeferred() {
         className="w-full"
       />
       <div className="text-center font-mono text-lg tabular-nums">{offset}</div>
-      <ColorGrid offset={offset} />
+      <ColorGrid offset={offset} maxRows={offset === 0 ? PREVIEW_ROWS : ROWS} />
+      {offset === 0 && (
+        <p className="text-xs text-gray-400">显示前 {PREVIEW_ROWS} 行，共 {ROWS} 行。拖动滑块查看完整效果。</p>
+      )}
     </div>
   )
 }
@@ -95,8 +99,11 @@ function WithDeferred() {
           isStale ? 'opacity-40' : 'opacity-100'
         }`}
       >
-        <ColorGrid offset={deferredOffset} />
+        <ColorGrid offset={deferredOffset} maxRows={offset === 0 ? PREVIEW_ROWS : ROWS} />
       </div>
+      {offset === 0 && (
+        <p className="text-xs text-gray-400">显示前 {PREVIEW_ROWS} 行，共 {ROWS} 行。拖动滑块查看完整效果。</p>
+      )}
     </div>
   )
 }

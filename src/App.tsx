@@ -7,6 +7,7 @@ import ReduxDemo from './pages/ReduxDemo'
 import ImmerDemo from './pages/ImmerDemo'
 import ExternalStoreDemo from './pages/ExternalStoreDemo'
 import TransitionDemo from './pages/TransitionDemo'
+import DeferredValueDemo from './pages/DeferredValueDemo'
 
 const { Content } = Layout
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/immer" element={<ImmerDemo />} />
           <Route path="/external-store" element={<ExternalStoreDemo />} />
           <Route path="/transition" element={<TransitionDemo />} />
+          <Route path="/deferred-value" element={<DeferredValueDemo />} />
         </Routes>
       </Content>
     </Layout>

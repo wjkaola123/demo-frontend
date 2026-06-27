@@ -21,6 +21,7 @@ const menuItems = [
       { key: '/immer', label: 'useImmer Demo' },
       { key: '/external-store', label: 'useSyncExternalStore Demo' },
       { key: '/transition', label: 'useTransition Demo' },
+      { key: '/deferred-value', label: 'useDeferredValue Demo' },
     ],
   },
   {

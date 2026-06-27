@@ -20,6 +20,10 @@ const menuItems = [
     key: '/immer',
     label: 'Immer useImmer Demo',
   },
+  {
+    key: '/external-store',
+    label: 'useSyncExternalStore Demo',
+  },
 ]
 
 export default function Sidebar() {

@@ -16,6 +16,10 @@ const menuItems = [
     key: '/redux',
     label: 'Redux 状态管理 Demo',
   },
+  {
+    key: '/immer',
+    label: 'Immer useImmer Demo',
+  },
 ]
 
 export default function Sidebar() {

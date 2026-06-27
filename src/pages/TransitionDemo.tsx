@@ -36,16 +36,26 @@ function filterItems(items: Item[], query: string): Item[] {
   )
 }
 
-function ItemList({ items }: { items: Item[] }) {
+function ItemList({ items, query }: { items: Item[]; query?: string }) {
+  const emptyQuery = !query?.trim()
+  const displayItems = emptyQuery && items.length > 200 ? items.slice(0, 50) : items
+
   return (
-    <ul className="divide-y divide-gray-200 text-sm max-h-[500px] overflow-y-auto border rounded">
-      {items.map(item => (
-        <li key={item.id} className="px-3 py-2 hover:bg-gray-50 flex justify-between">
-          <span>{item.name}</span>
-          <span className="text-gray-400 text-xs">{item.category}</span>
-        </li>
-      ))}
-    </ul>
+    <div>
+      <ul className="divide-y divide-gray-200 text-sm max-h-[500px] overflow-y-auto border rounded">
+        {displayItems.map(item => (
+          <li key={item.id} className="px-3 py-2 hover:bg-gray-50 flex justify-between">
+            <span>{item.name}</span>
+            <span className="text-gray-400 text-xs">{item.category}</span>
+          </li>
+        ))}
+      </ul>
+      {emptyQuery && items.length > 200 && (
+        <p className="text-xs text-gray-400 mt-1">
+          显示前 50 条，共 {items.length} 条。输入关键词搜索全部数据。
+        </p>
+      )}
+    </div>
   )
 }
 
@@ -66,7 +76,7 @@ function WithoutTransition() {
       <div className="flex justify-between text-xs text-gray-400">
         <span>匹配结果: {filtered.length} 条</span>
       </div>
-      <ItemList items={filtered} />
+      <ItemList items={filtered} query={query} />
     </div>
   )
 }
@@ -97,7 +107,7 @@ function WithTransition() {
         )}
       </div>
       <div className={`transition-opacity duration-200 ${isPending ? 'opacity-50' : 'opacity-100'}`}>
-        <ItemList items={filtered} />
+        <ItemList items={filtered} query={query} />
       </div>
     </div>
   )

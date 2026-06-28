@@ -11,6 +11,7 @@ import DeferredValueDemo from './pages/DeferredValueDemo'
 import UseEffectDemo from './pages/UseEffectDemo'
 import UseLayoutEffectDemo from './pages/UseLayoutEffectDemo'
 import UseRefDemo from './pages/UseRefDemo'
+import UseImperativeHandleDemo from './pages/UseImperativeHandleDemo'
 
 const { Content } = Layout
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/use-effect" element={<UseEffectDemo />} />
           <Route path="/use-layout-effect" element={<UseLayoutEffectDemo />} />
           <Route path="/use-ref" element={<UseRefDemo />} />
+          <Route path="/use-imperative-handle" element={<UseImperativeHandleDemo />} />
         </Routes>
       </Content>
     </Layout>

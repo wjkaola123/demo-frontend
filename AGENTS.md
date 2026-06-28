@@ -3,46 +3,63 @@
 ## Commands
 
 ```bash
-npm run dev       # vite dev server on :5173 (Docker overrides to :80)
-npm run preview   # vite preview (serve built dist locally)
-npm run build     # tsc -b && vite build (typecheck before bundle)
-npm run lint      # eslint .
-npm run test      # vitest run (setupFiles commented out — no tests yet)
+npm run dev        # vite dev server on :5173 (Docker overrides to :80)
+npm run build      # tsc -b && vite build (typecheck before bundle)
+npm run preview    # vite preview (serve built dist locally)
+npm run lint       # eslint .
+npm run test       # vitest run
+npm run test:watch # vitest watch mode
 ```
 
 ## Stack
 
 React 19 · TypeScript 6.0 · Vite 8 · Tailwind v4 · antd v6 · react-router-dom v7
 
-## Architecture — 5 state management demos
+## Architecture — 11 demos, 3 groups
+
+Sidebar groups demos into three categories:
+
+**全局状态管理库:**
+- `ZustandDemo` — Zustand stores (counter + todo)
+- `ReduxDemo` — Redux Toolkit (createSlice + configureStore)
+
+**React 原生 Hooks:**
+- `ImmerDemo` — useImmer hook (mutable-syntax immutable state)
+- `ExternalStoreDemo` — useSyncExternalStore (external store + localStorage)
+- `TransitionDemo` — useTransition
+- `DeferredValueDemo` — useDeferredValue
+- `UseEffectDemo` — useEffect
+- `UseLayoutEffectDemo` — useLayoutEffect
+- `UseRefDemo` — useRef
+- `UseImperativeHandleDemo` — useImperativeHandle
+
+**跨层通信:**
+- `CrossLayerDemo` — React Context + EventBus (pub/sub)
 
 ```
 src/
 ├── main.tsx              entry — Redux <Provider> → <BrowserRouter> → <App />
-├── App.tsx               antd Layout (Sider + Content) + 5 routes
-├── pages/                one route-level component per pattern
-│   ├── CrossLayerDemo    React Context + Event Bus (peer-to-peer)
-│   ├── ZustandDemo       Zustand stores (counter + todo)
-│   ├── ReduxDemo         Redux Toolkit (createSlice + configureStore)
-│   ├── ImmerDemo         useImmer hook (mutable-syntax immutable state)
-│   └── ExternalStoreDemo useSyncExternalStore (external store + localStorage)
-├── components/           Sidebar (antd Menu)
+├── App.tsx               antd Layout + 11 <Route> entries
+├── components/
+│   └── Sidebar.tsx       antd Menu with 3 grouped categories
+├── pages/                one route-level component per demo
 ├── lib/                  state management implementations
 │   ├── context.tsx       AppProvider + useAppContext
 │   ├── event-bus.ts      pub/sub EventBus singleton
 │   ├── zustand-store.ts  useCounterStore + useTodoStore
 │   ├── redux-store.ts    counterSlice + todoSlice + configureStore
 │   └── external-store.ts subscribe/getSnapshot pattern + localStorage sync
-└── index.css             Tailwind v4 @import + @theme tokens
+└── index.css             Tailwind v4: @import "tailwindcss";
 ```
 
 ## Gotchas
 
 - **TypeScript `verbatimModuleSyntax` + `erasableSyntaxOnly`** — `import type` required for type-only imports; no enum, namespace, or parameter properties
 - **Tailwind v4** — `@import "tailwindcss"` in CSS, not PostCSS plugin. Theme in `@theme {}` block. `tailwind.config.js` exists only for IDE tooling
-- **Path alias** — `@/` maps to `src/` (configured in tsconfig + vite.resolve.alias)
+- **Path alias** — `@/` maps to `src/` (tsconfig paths + vite.resolve.alias)
 - **antd v6** — Used for Layout/Sider/Menu only; no antd components in pages
-- **vitest `setupFiles`** is commented out in vitest.config.ts — uncomment before writing tests
+- **Vite HMR** — configured with `usePolling: true` for Docker compatibility
+- **No existing tests** — vitest `setupFiles` is commented out; no test files or test-setup exist yet. Use `@testing-library/react` + `jsdom` when adding tests
 
 ## Docker
 
@@ -56,4 +73,6 @@ docker compose down
 - Backend at `http://localhost:8000` / `ws://localhost:8000`
 
 ## Notice
-- Every time start writing a new demo,make sure don't impact the finished demos
+
+- 新增 demo 时，只需添加页面文件和路由，不要改动已有的 demo 文件
+- lib/ 下的 store 实现是共享的，修改时要确保不影响已有 demo

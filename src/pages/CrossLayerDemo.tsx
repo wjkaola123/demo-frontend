@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { AppProvider, useAppContext } from '../lib/context'
+import { AppProvider } from '../lib/context'
+import { useAppContext } from '../lib/use-app-context'
 import { bus } from '../lib/event-bus'
 
 function Layer1() {

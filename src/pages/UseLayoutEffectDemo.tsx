@@ -47,12 +47,13 @@ function ProgressBarDemo({ useLayout }: { useLayout: boolean }) {
   const barRef = useRef<HTMLDivElement>(null)
   const [trigger, setTrigger] = useState(0)
 
+  // eslint-disable-next-line react-hooks/refs
   hook(() => {
     if (trigger > 0 && barRef.current) {
       if (useLayout) {
         barRef.current.style.transition = 'none'
         barRef.current.style.width = '100%'
-        barRef.current.offsetHeight
+        void barRef.current.offsetHeight
         barRef.current.style.transition = ''
       } else {
         barRef.current.style.width = '100%'
@@ -64,7 +65,7 @@ function ProgressBarDemo({ useLayout }: { useLayout: boolean }) {
   const start = () => {
     if (barRef.current) {
       barRef.current.style.width = '0%'
-      barRef.current.offsetHeight
+      void barRef.current.offsetHeight
     }
     setTrigger(t => t + 1)
   }
@@ -110,6 +111,7 @@ function TooltipDemo({ useLayout }: { useLayout: boolean }) {
   const [version, setVersion] = useState(0)
   const coordsRef = useRef({ top: 0, left: 0 })
 
+  // eslint-disable-next-line react-hooks/refs
   hook(() => {
     if (show && tooltipRef.current) {
       const { top, left } = coordsRef.current
@@ -118,7 +120,7 @@ function TooltipDemo({ useLayout }: { useLayout: boolean }) {
         tooltipRef.current.style.transition = 'none'
         tooltipRef.current.style.top = `${top}px`
         tooltipRef.current.style.left = `${left}px`
-        tooltipRef.current.offsetHeight
+        void tooltipRef.current.offsetHeight
         tooltipRef.current.style.transition = ''
       } else {
         tooltipRef.current.style.top = `${top}px`

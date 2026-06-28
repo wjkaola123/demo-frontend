@@ -1,17 +1,5 @@
-import { createContext, useContext, useState, type ReactNode } from 'react'
-
-interface AppState {
-  message: string
-  count: number
-}
-
-interface AppContextType {
-  state: AppState
-  setMessage: (msg: string) => void
-  increment: () => void
-}
-
-const AppContext = createContext<AppContextType | null>(null)
+import { useState, type ReactNode } from 'react'
+import { AppContext, type AppState } from './app-context'
 
 export function AppProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<AppState>({ message: 'Hello from Context', count: 0 })
@@ -24,10 +12,4 @@ export function AppProvider({ children }: { children: ReactNode }) {
       {children}
     </AppContext.Provider>
   )
-}
-
-export function useAppContext() {
-  const ctx = useContext(AppContext)
-  if (!ctx) throw new Error('useAppContext must be used within AppProvider')
-  return ctx
 }

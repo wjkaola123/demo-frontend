@@ -54,3 +54,6 @@ docker compose down
 - Dev: `Dockerfile.dev` (node:20-alpine, npm dev on :80)
 - Prod: `Dockerfile` (multi-stage → nginx:alpine) — `VITE_API_BASE_URL` build arg via `.env.docker`
 - Backend at `http://localhost:8000` / `ws://localhost:8000`
+
+## Notice
+- Every time start writing a new demo,make sure don't impact the finished demos

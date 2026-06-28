@@ -26,6 +26,7 @@ const menuItems = [
       { key: '/use-layout-effect', label: 'useLayoutEffect Demo' },
       { key: '/use-ref', label: 'useRef Demo' },
       { key: '/use-imperative-handle', label: 'useImperativeHandle Demo' },
+      { key: '/memo', label: 'useMemo & React.memo Demo' },
     ],
   },
   {

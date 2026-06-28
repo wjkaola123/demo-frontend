@@ -10,6 +10,7 @@ import TransitionDemo from './pages/TransitionDemo'
 import DeferredValueDemo from './pages/DeferredValueDemo'
 import UseEffectDemo from './pages/UseEffectDemo'
 import UseLayoutEffectDemo from './pages/UseLayoutEffectDemo'
+import UseRefDemo from './pages/UseRefDemo'
 
 const { Content } = Layout
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/deferred-value" element={<DeferredValueDemo />} />
           <Route path="/use-effect" element={<UseEffectDemo />} />
           <Route path="/use-layout-effect" element={<UseLayoutEffectDemo />} />
+          <Route path="/use-ref" element={<UseRefDemo />} />
         </Routes>
       </Content>
     </Layout>

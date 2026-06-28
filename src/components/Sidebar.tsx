@@ -23,6 +23,7 @@ const menuItems = [
       { key: '/transition', label: 'useTransition Demo' },
       { key: '/deferred-value', label: 'useDeferredValue Demo' },
       { key: '/use-effect', label: 'useEffect Demo' },
+      { key: '/use-layout-effect', label: 'useLayoutEffect Demo' },
     ],
   },
   {

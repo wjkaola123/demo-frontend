@@ -9,6 +9,7 @@ import ExternalStoreDemo from './pages/ExternalStoreDemo'
 import TransitionDemo from './pages/TransitionDemo'
 import DeferredValueDemo from './pages/DeferredValueDemo'
 import UseEffectDemo from './pages/UseEffectDemo'
+import UseLayoutEffectDemo from './pages/UseLayoutEffectDemo'
 
 const { Content } = Layout
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/transition" element={<TransitionDemo />} />
           <Route path="/deferred-value" element={<DeferredValueDemo />} />
           <Route path="/use-effect" element={<UseEffectDemo />} />
+          <Route path="/use-layout-effect" element={<UseLayoutEffectDemo />} />
         </Routes>
       </Content>
     </Layout>

@@ -22,6 +22,7 @@ const menuItems = [
       { key: '/external-store', label: 'useSyncExternalStore Demo' },
       { key: '/transition', label: 'useTransition Demo' },
       { key: '/deferred-value', label: 'useDeferredValue Demo' },
+      { key: '/use-effect', label: 'useEffect Demo' },
     ],
   },
   {

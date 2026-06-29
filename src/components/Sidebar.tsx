@@ -1,23 +1,33 @@
-import { useLocation, useNavigate } from 'react-router-dom'
-import { Layout, Menu } from 'antd'
+import { useLocation, Link } from 'react-router-dom'
+import { ChevronDown } from 'lucide-react'
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarGroupContent,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from '@/components/ui/sidebar'
+import {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
+} from '@/components/ui/collapsible'
 
-const { Sider } = Layout
-
-const menuItems = [
+const menuGroups = [
   {
-    key: 'group-libs',
-    type: 'group' as const,
     label: '全局状态管理库',
-    children: [
+    items: [
       { key: '/zustand', label: 'Zustand Demo' },
       { key: '/redux', label: 'Redux Demo' },
     ],
   },
   {
-    key: 'group-react',
-    type: 'group' as const,
     label: 'React 原生 Hooks',
-    children: [
+    items: [
       { key: '/immer', label: 'useImmer Demo' },
       { key: '/external-store', label: 'useSyncExternalStore Demo' },
       { key: '/transition', label: 'useTransition Demo' },
@@ -30,31 +40,65 @@ const menuItems = [
     ],
   },
   {
-    key: 'group-cross',
-    type: 'group' as const,
     label: '跨层通信',
-    children: [
+    items: [
       { key: '/', label: '跨层传递数据 Demo' },
     ],
   },
 ]
 
-export default function Sidebar() {
+export default function AppSidebar() {
   const location = useLocation()
-  const navigate = useNavigate()
 
   return (
-    <Sider width={220} theme="dark">
-      <div className="h-16 flex items-center justify-center text-white font-bold text-lg border-b border-white/10">
-        Demo Frontend
-      </div>
-      <Menu
-        theme="dark"
-        mode="inline"
-        selectedKeys={[location.pathname]}
-        items={menuItems}
-        onClick={({ key }) => navigate(key)}
-      />
-    </Sider>
+    <Sidebar collapsible="icon">
+      <SidebarHeader>
+        <div className="flex h-14 items-center justify-center border-b border-sidebar-border">
+          <span className="font-semibold text-lg text-sidebar-foreground group-data-[collapsible=icon]:hidden">
+            Demo Frontend
+          </span>
+          <span className="font-semibold text-lg text-sidebar-foreground hidden group-data-[collapsible=icon]:inline">
+            DF
+          </span>
+        </div>
+      </SidebarHeader>
+      <SidebarContent>
+        {menuGroups.map((group) => (
+          <Collapsible
+            key={group.label}
+            defaultOpen
+            className="group/collapsible"
+          >
+            <SidebarGroup>
+              <SidebarGroupLabel asChild>
+                <CollapsibleTrigger>
+                  {group.label}
+                  <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
+                </CollapsibleTrigger>
+              </SidebarGroupLabel>
+              <CollapsibleContent>
+                <SidebarGroupContent>
+                  <SidebarMenu>
+                    {group.items.map((item) => (
+                      <SidebarMenuItem key={item.key}>
+                        <SidebarMenuButton
+                          asChild
+                          isActive={location.pathname === item.key}
+                          tooltip={item.label}
+                        >
+                          <Link to={item.key}>
+                            {item.label}
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    ))}
+                  </SidebarMenu>
+                </SidebarGroupContent>
+              </CollapsibleContent>
+            </SidebarGroup>
+          </Collapsible>
+        ))}
+      </SidebarContent>
+    </Sidebar>
   )
 }

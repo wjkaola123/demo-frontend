@@ -14,6 +14,7 @@ import UseRefDemo from './pages/UseRefDemo'
 import UseImperativeHandleDemo from './pages/UseImperativeHandleDemo'
 import MemoDemo from './pages/MemoDemo'
 import UseCallbackDemo from './pages/UseCallbackDemo'
+import UseDebugValueDemo from './pages/UseDebugValueDemo'
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
             <Route path="/use-imperative-handle" element={<UseImperativeHandleDemo />} />
             <Route path="/memo" element={<MemoDemo />} />
             <Route path="/use-callback" element={<UseCallbackDemo />} />
+            <Route path="/use-debug-value" element={<UseDebugValueDemo />} />
           </Routes>
         </div>
       </SidebarInset>

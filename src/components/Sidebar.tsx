@@ -38,6 +38,7 @@ const menuGroups = [
       { key: '/use-imperative-handle', label: 'useImperativeHandle Demo' },
       { key: '/memo', label: 'useMemo & React.memo Demo' },
       { key: '/use-callback', label: 'useCallback Demo' },
+      { key: '/use-debug-value', label: 'useDebugValue Demo' },
     ],
   },
   {

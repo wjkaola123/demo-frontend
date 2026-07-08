@@ -39,6 +39,7 @@ const menuGroups = [
       { key: '/memo', label: 'useMemo & React.memo Demo' },
       { key: '/use-callback', label: 'useCallback Demo' },
       { key: '/use-debug-value', label: 'useDebugValue Demo' },
+      { key: '/suspense', label: 'Suspense 骨架屏 Demo' },
     ],
   },
   {

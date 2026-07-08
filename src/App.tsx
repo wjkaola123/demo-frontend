@@ -16,6 +16,7 @@ import MemoDemo from './pages/MemoDemo'
 import UseCallbackDemo from './pages/UseCallbackDemo'
 import UseDebugValueDemo from './pages/UseDebugValueDemo'
 import SuspenseDemo from './pages/SuspenseDemo'
+import HocDemo from './pages/HocDemo'
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
             <Route path="/use-callback" element={<UseCallbackDemo />} />
             <Route path="/use-debug-value" element={<UseDebugValueDemo />} />
             <Route path="/suspense" element={<SuspenseDemo />} />
+            <Route path="/hoc" element={<HocDemo />} />
           </Routes>
         </div>
       </SidebarInset>

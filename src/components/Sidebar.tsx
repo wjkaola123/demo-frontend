@@ -43,6 +43,12 @@ const menuGroups = [
     ],
   },
   {
+    label: '设计模式',
+    items: [
+      { key: '/hoc', label: 'HOC 高阶组件 Demo' },
+    ],
+  },
+  {
     label: '跨层通信',
     items: [
       { key: '/', label: '跨层传递数据 Demo' },

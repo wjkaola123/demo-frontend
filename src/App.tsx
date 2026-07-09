@@ -17,6 +17,7 @@ import UseCallbackDemo from './pages/UseCallbackDemo'
 import UseDebugValueDemo from './pages/UseDebugValueDemo'
 import SuspenseDemo from './pages/SuspenseDemo'
 import HocDemo from './pages/HocDemo'
+import CreatePortalDemo from './pages/CreatePortalDemo'
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
             <Route path="/use-debug-value" element={<UseDebugValueDemo />} />
             <Route path="/suspense" element={<SuspenseDemo />} />
             <Route path="/hoc" element={<HocDemo />} />
+            <Route path="/create-portal" element={<CreatePortalDemo />} />
           </Routes>
         </div>
       </SidebarInset>

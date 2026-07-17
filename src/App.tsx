@@ -21,11 +21,11 @@ import CreatePortalDemo from './pages/CreatePortalDemo'
 
 function App() {
   return (
-    <SidebarProvider>
+    <SidebarProvider className="bg-muted/30">
       <AppSidebar />
       <SidebarInset>
-        <header className="flex h-14 shrink-0 items-center gap-2 border-b px-4">
-          <SidebarTrigger />
+        <header className="flex h-14 shrink-0 items-center gap-2 border-b bg-background/80 px-4 backdrop-blur-sm">
+          <SidebarTrigger className="transition-all duration-200 hover:bg-accent hover:shadow-sm" />
         </header>
         <div className="flex-1 p-6">
           <Routes>

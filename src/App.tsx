@@ -20,6 +20,7 @@ import SuspenseDemo from './pages/SuspenseDemo'
 import HocDemo from './pages/HocDemo'
 import CreatePortalDemo from './pages/CreatePortalDemo'
 import RouterDemo, { TabA, TabB } from './pages/RouterDemo'
+import RouterParamsDemo, { NestedHome, NestedProfile, NestedSettings } from './pages/RouterParamsDemo'
 
 function App() {
   return (
@@ -55,6 +56,14 @@ function App() {
               <Route path=":id?" element={<TabA />} />
               <Route path="tab-b" element={<TabB />} />
             </Route>
+            <Route path="/router-params" element={<RouterParamsDemo />}>
+              <Route path="nested" element={<NestedHome />} />
+              <Route path="nested/profile/:id" element={<NestedProfile />} />
+              <Route path="nested/settings" element={<NestedSettings />} />
+            </Route>
+            <Route path="/router-params/user/:id" element={<RouterParamsDemo />} />
+            <Route path="/router-params/state" element={<RouterParamsDemo />} />
+            <Route path="/router-params/hash" element={<RouterParamsDemo />} />
           </Routes>
         </div>
       </SidebarInset>

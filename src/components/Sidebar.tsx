@@ -83,6 +83,7 @@ const menuGroups: MenuGroup[] = [
       { key: '/suspense', label: 'Suspense 骨架屏 Demo', icon: Loader },
       { key: '/create-portal', label: 'createPortal Demo', icon: ExternalLink },
       { key: '/router-demo', label: 'React Router Demo', icon: ExternalLink },
+      { key: '/router-params', label: 'Router 传参 Demo', icon: Link2 },
     ],
   },
   {
@@ -144,7 +145,9 @@ export default function AppSidebar() {
                     <SidebarMenu className="gap-0.5">
                       {group.items.map((item) => {
                         const ItemIcon = item.icon
-                        const isActive = location.pathname === item.key
+                        const isActive = item.key === '/'
+                          ? location.pathname === item.key
+                          : location.pathname === item.key || location.pathname.startsWith(item.key + '/')
                         return (
                           <SidebarMenuItem key={item.key}>
                             <SidebarMenuButton
@@ -180,7 +183,7 @@ export default function AppSidebar() {
       <SidebarFooter className="border-t border-sidebar-border/60 p-3">
         <div className="rounded-lg bg-sidebar-accent/50 px-3 py-2 text-center ring-1 ring-sidebar-border/50 transition-all duration-200 hover:bg-sidebar-accent hover:shadow-sm group-data-[collapsible=icon]:hidden">
           <p className="text-[11px] font-medium text-sidebar-foreground/70">
-            17 个交互式 Demo
+            18 个交互式 Demo
           </p>
         </div>
       </SidebarFooter>

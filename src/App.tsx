@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import { SidebarProvider, SidebarTrigger, SidebarInset } from '@/components/ui/sidebar'
 import AppSidebar from './components/Sidebar'
+import ThemeToggle from './components/ThemeToggle'
 import CrossLayerDemo from './pages/CrossLayerDemo'
 import ZustandDemo from './pages/ZustandDemo'
 import ReduxDemo from './pages/ReduxDemo'
@@ -26,6 +27,9 @@ function App() {
       <SidebarInset>
         <header className="flex h-14 shrink-0 items-center gap-2 border-b bg-background/80 px-4 backdrop-blur-sm">
           <SidebarTrigger className="transition-all duration-200 hover:bg-accent hover:shadow-sm" />
+          <div className="ml-auto flex items-center gap-2">
+            <ThemeToggle />
+          </div>
         </header>
         <div className="flex-1 p-6">
           <Routes>

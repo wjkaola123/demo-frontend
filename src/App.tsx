@@ -19,6 +19,7 @@ import UseDebugValueDemo from './pages/UseDebugValueDemo'
 import SuspenseDemo from './pages/SuspenseDemo'
 import HocDemo from './pages/HocDemo'
 import CreatePortalDemo from './pages/CreatePortalDemo'
+import RouterDemo, { TabA, TabB } from './pages/RouterDemo'
 
 function App() {
   return (
@@ -50,6 +51,10 @@ function App() {
             <Route path="/suspense" element={<SuspenseDemo />} />
             <Route path="/hoc" element={<HocDemo />} />
             <Route path="/create-portal" element={<CreatePortalDemo />} />
+            <Route path="/router-demo" element={<RouterDemo />}>
+              <Route path=":id?" element={<TabA />} />
+              <Route path="tab-b" element={<TabB />} />
+            </Route>
           </Routes>
         </div>
       </SidebarInset>

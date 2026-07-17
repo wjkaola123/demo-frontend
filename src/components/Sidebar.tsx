@@ -82,6 +82,7 @@ const menuGroups: MenuGroup[] = [
       { key: '/use-debug-value', label: 'useDebugValue Demo', icon: Bug },
       { key: '/suspense', label: 'Suspense 骨架屏 Demo', icon: Loader },
       { key: '/create-portal', label: 'createPortal Demo', icon: ExternalLink },
+      { key: '/router-demo', label: 'React Router Demo', icon: ExternalLink },
     ],
   },
   {
@@ -179,7 +180,7 @@ export default function AppSidebar() {
       <SidebarFooter className="border-t border-sidebar-border/60 p-3">
         <div className="rounded-lg bg-sidebar-accent/50 px-3 py-2 text-center ring-1 ring-sidebar-border/50 transition-all duration-200 hover:bg-sidebar-accent hover:shadow-sm group-data-[collapsible=icon]:hidden">
           <p className="text-[11px] font-medium text-sidebar-foreground/70">
-            16 个交互式 Demo
+            17 个交互式 Demo
           </p>
         </div>
       </SidebarFooter>

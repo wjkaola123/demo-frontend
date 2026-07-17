@@ -1,4 +1,4 @@
-import { useState, useDebugValue, useSyncExternalStore } from 'react'
+import { useRef, useState, useDebugValue, useSyncExternalStore } from 'react'
 
 function useOnlineStatus() {
   const status = useSyncExternalStore(
@@ -19,11 +19,11 @@ function useOnlineStatus() {
 }
 
 function useWindowSize() {
-  let cache: { width: number; height: number } | undefined
+  const cache = useRef<{ width: number; height: number } | undefined>(undefined)
   const getSnapshot = () => {
     const next = { width: window.innerWidth, height: window.innerHeight }
-    if (cache && cache.width === next.width && cache.height === next.height) return cache
-    cache = next
+    if (cache.current && cache.current.width === next.width && cache.current.height === next.height) return cache.current
+    cache.current = next
     return next
   }
 

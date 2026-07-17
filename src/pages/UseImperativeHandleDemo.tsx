@@ -39,13 +39,13 @@ function InputSection() {
           聚焦
         </button>
         <button
-          className="bg-gray-500 text-white px-3 py-1 rounded text-sm"
+          className="bg-secondary text-secondary-foreground px-3 py-1 rounded text-sm"
           onClick={() => ref.current?.clear()}
         >
           清空
         </button>
       </div>
-      <p className="text-gray-500 text-sm mt-2">
+      <p className="text-muted-foreground text-sm mt-2">
         forwardRef 将 ref 转发到子组件，useImperativeHandle 限制父组件只能调用 focus/clear
       </p>
     </div>
@@ -107,14 +107,14 @@ function StopwatchSection() {
             暂停
           </button>
           <button
-            className="bg-gray-500 text-white px-3 py-1 rounded text-sm"
+            className="bg-secondary text-secondary-foreground px-3 py-1 rounded text-sm"
             onClick={() => ref.current?.reset()}
           >
             重置
           </button>
         </div>
       </div>
-      <p className="text-gray-500 text-sm mt-2">
+      <p className="text-muted-foreground text-sm mt-2">
         秒表内部管理自己的 state 和定时器；父组件通过 ref 只拿到 start/stop/reset 三个方法
       </p>
     </div>
@@ -125,14 +125,14 @@ export default function UseImperativeHandleDemo() {
   return (
     <div className="p-8 max-w-2xl">
       <h1 className="text-2xl font-bold mb-2">useImperativeHandle Demo</h1>
-      <p className="text-gray-500 mb-4">
+      <p className="text-muted-foreground mb-4">
         配合 forwardRef，让子组件选择性地暴露方法给父组件调用
       </p>
       <div className="flex flex-col gap-4">
         <InputSection />
         <StopwatchSection />
       </div>
-      <div className="mt-4 p-4 bg-gray-100 rounded text-sm">
+      <div className="mt-4 p-4 bg-muted rounded text-sm">
         <p className="font-semibold mb-1">useImperativeHandle 特点:</p>
         <ul className="list-disc pl-4 space-y-1 mb-3">
           <li>必须与 forwardRef 配合使用，ref 才能传入子组件</li>

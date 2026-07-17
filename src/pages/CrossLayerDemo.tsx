@@ -82,14 +82,14 @@ export default function CrossLayerDemo() {
     <AppProvider>
       <div className="p-8 max-w-2xl">
         <h1 className="text-2xl font-bold mb-2">跨层传递数据 Demo</h1>
-        <p className="text-gray-500 mb-4">
+        <p className="text-muted-foreground mb-4">
           Layer 1 ↔ Layer 3 直接通信，中间 Layer 2 不感知传递过程
         </p>
-        <div className="border-2 border-dashed border-gray-300 rounded-lg p-4">
+        <div className="border-2 border-dashed border-border rounded-lg p-4">
           <Layer1 />
           <Layer2 />
         </div>
-        <div className="mt-4 p-4 bg-gray-100 rounded text-sm">
+        <div className="mt-4 p-4 bg-muted rounded text-sm">
           <p className="font-semibold mb-1">两种跨层通信方式:</p>
           <ul className="list-disc pl-4 space-y-1">
             <li>

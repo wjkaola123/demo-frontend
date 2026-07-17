@@ -13,7 +13,7 @@ const MemoItem = memo(function MemoItem({ id, name, onToggle, selected }: MemoIt
   return (
     <div
       className={`px-3 py-2 border-b cursor-pointer transition-colors ${
-        selected ? 'bg-blue-100' : 'hover:bg-gray-50'
+        selected ? 'bg-primary/10' : 'hover:bg-muted/50'
       }`}
       onClick={() => onToggle(id)}
     >
@@ -38,7 +38,7 @@ const NonMemoItem = function NonMemoItem({ id, name, onToggle, selected }: MemoI
     <div
       ref={ref}
       className={`px-3 py-2 border-b cursor-pointer transition-colors ${
-        selected ? 'bg-blue-100' : 'hover:bg-gray-50'
+        selected ? 'bg-primary/10' : 'hover:bg-muted/50'
       }`}
       onClick={() => onToggle(id)}
     >
@@ -59,7 +59,7 @@ function ReactMemoSection() {
   return (
     <div className="border-2 border-purple-400 rounded-lg p-4 flex flex-col gap-3">
       <h2 className="font-bold text-lg">React.memo</h2>
-      <p className="text-sm text-gray-500">
+      <p className="text-sm text-muted-foreground">
         memo 包裹组件后，props 不变则跳过重渲染。下方两个列表分别为使用/不使用 memo：
       </p>
 
@@ -70,7 +70,7 @@ function ReactMemoSection() {
         >
           点击 +1 (不影响 props): {count}
         </button>
-        <span className="text-xs text-gray-400">
+        <span className="text-xs text-muted-foreground">
           选中项 ID: {selectedId ?? '-'}
         </span>
       </div>
@@ -106,7 +106,7 @@ function ReactMemoSection() {
         </div>
       </div>
 
-      <p className="text-xs text-gray-400">
+      <p className="text-xs text-muted-foreground">
         点击上方按钮增加计数，观察右侧（无 memo）每项会闪烁红色（说明全部重渲染），
         左侧（有 memo）无变化——因为 props 未变，渲染被跳过。
       </p>
@@ -134,7 +134,7 @@ function UseMemoSection() {
   return (
     <div className="border-2 border-indigo-400 rounded-lg p-4 flex flex-col gap-3">
       <h2 className="font-bold text-lg">useMemo</h2>
-      <p className="text-sm text-gray-500">
+      <p className="text-sm text-muted-foreground">
         计算 1+2+...+N，结果被缓存。改 N 触发重算，点按钮只重渲染不重算。
       </p>
 
@@ -159,11 +159,11 @@ function UseMemoSection() {
         </button>
       </div>
 
-      <div className="text-sm text-gray-600">
+      <div className="text-sm text-muted-foreground">
         计算结果: {result}
       </div>
 
-      <p className="text-xs text-gray-400">
+      <p className="text-xs text-muted-foreground">
         拖动 slider 改变 N → 依赖变化，useMemo 重新执行计算。
         点击按钮增加 count → 依赖未变，useMemo 跳过计算直接返回缓存值。
       </p>
@@ -177,11 +177,11 @@ export default function MemoDemo() {
   return (
     <div className="p-8 max-w-5xl">
       <h1 className="text-2xl font-bold mb-2">useMemo 与 React.memo Demo</h1>
-      <p className="text-gray-500 mb-6">
+      <p className="text-muted-foreground mb-6">
         两者都用于性能优化 — useMemo 缓存计算结果，React.memo 缓存组件渲染
       </p>
 
-      <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded text-sm">
+      <div className="mb-6 p-4 bg-muted border border-border rounded text-sm">
         <p className="font-semibold mb-1">操作说明：</p>
         <ul className="list-disc pl-4 space-y-0.5">
           <li><strong>useMemo：</strong>拖动 slider 改变 threshold 会触发耗时计算；点击触发渲染按钮仅增加 tick，不重算</li>
@@ -194,11 +194,11 @@ export default function MemoDemo() {
         <UseMemoSection />
       </div>
 
-      <div className="mt-6 p-4 bg-gray-100 rounded text-sm">
+      <div className="mt-6 p-4 bg-muted rounded text-sm">
         <p className="font-semibold mb-1">要点:</p>
         <ul className="list-disc pl-4 space-y-1">
-          <li><code className="bg-gray-200 px-1 rounded">useMemo(fn, deps)</code> — 仅当 deps 变化时重新执行 fn，否则返回缓存值</li>
-          <li><code className="bg-gray-200 px-1 rounded">memo(Component)</code> — 仅当 props 变化时重渲染，否则复用上次结果</li>
+          <li><code className="bg-muted px-1 rounded">useMemo(fn, deps)</code> — 仅当 deps 变化时重新执行 fn，否则返回缓存值</li>
+          <li><code className="bg-muted px-1 rounded">memo(Component)</code> — 仅当 props 变化时重渲染，否则复用上次结果</li>
           <li>useMemo 用于<strong>值</strong>（计算结果）缓存；React.memo 用于<strong>组件</strong>渲染缓存</li>
           <li>不要过度使用 — 仅在确有性能瓶颈时使用，memoization 本身也有开销</li>
           <li>React 19 中编译器（React Compiler）可自动插入 memo，开发者可逐步减少手写 memo</li>

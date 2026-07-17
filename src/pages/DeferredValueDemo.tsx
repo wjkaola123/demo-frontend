@@ -47,7 +47,7 @@ function WithoutDeferred() {
   return (
     <div className="border-2 border-red-300 rounded-lg p-4 flex flex-col gap-3">
       <h2 className="font-bold text-lg">不使用 useDeferredValue</h2>
-      <p className="text-xs text-gray-500">
+      <p className="text-xs text-muted-foreground">
         直接使用 offset 渲染 Grid，每次拖拽都触发完整重渲染
       </p>
       <input
@@ -61,7 +61,7 @@ function WithoutDeferred() {
       <div className="text-center font-mono text-lg tabular-nums">{offset}</div>
       <ColorGrid offset={offset} maxRows={offset === 0 ? PREVIEW_ROWS : ROWS} />
       {offset === 0 && (
-        <p className="text-xs text-gray-400">显示前 {PREVIEW_ROWS} 行，共 {ROWS} 行。拖动滑块查看完整效果。</p>
+        <p className="text-xs text-muted-foreground">显示前 {PREVIEW_ROWS} 行，共 {ROWS} 行。拖动滑块查看完整效果。</p>
       )}
     </div>
   )
@@ -75,7 +75,7 @@ function WithDeferred() {
   return (
     <div className="border-2 border-green-400 rounded-lg p-4 flex flex-col gap-3">
       <h2 className="font-bold text-lg">使用 useDeferredValue</h2>
-      <p className="text-xs text-gray-500">
+      <p className="text-xs text-muted-foreground">
         offset 立即更新，Grid 使用延迟后的值渲染
       </p>
       <input
@@ -102,7 +102,7 @@ function WithDeferred() {
         <ColorGrid offset={deferredOffset} maxRows={offset === 0 ? PREVIEW_ROWS : ROWS} />
       </div>
       {offset === 0 && (
-        <p className="text-xs text-gray-400">显示前 {PREVIEW_ROWS} 行，共 {ROWS} 行。拖动滑块查看完整效果。</p>
+        <p className="text-xs text-muted-foreground">显示前 {PREVIEW_ROWS} 行，共 {ROWS} 行。拖动滑块查看完整效果。</p>
       )}
     </div>
   )
@@ -112,11 +112,11 @@ export default function DeferredValueDemo() {
   return (
     <div className="p-8 max-w-5xl">
       <h1 className="text-2xl font-bold mb-2">React useDeferredValue Demo</h1>
-      <p className="text-gray-500 mb-6">
+      <p className="text-muted-foreground mb-6">
         延迟更新某个值，让高优先级更新（如滑块拖拽）保持流畅
       </p>
 
-      <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded text-sm">
+      <div className="mb-6 p-4 bg-muted border border-border rounded text-sm">
         <p className="font-semibold mb-1">操作说明：</p>
         <p>
           快速拖动两边的滑块。左侧直接渲染 100x100 色块网格（10000
@@ -130,7 +130,7 @@ export default function DeferredValueDemo() {
         <WithDeferred />
       </div>
 
-      <div className="mt-6 p-4 bg-gray-100 rounded text-sm">
+      <div className="mt-6 p-4 bg-muted rounded text-sm">
         <p className="font-semibold mb-1">useDeferredValue 要点:</p>
         <ul className="list-disc pl-4 space-y-1">
           <li>
@@ -138,7 +138,7 @@ export default function DeferredValueDemo() {
           </li>
           <li>
             旧值会被保留到新值渲染完成，期间可通过{' '}
-            <code className="bg-gray-200 px-1 rounded">
+            <code className="bg-muted px-1 rounded">
               value !== deferredValue
             </code>{' '}
             判断是否过时
@@ -148,12 +148,12 @@ export default function DeferredValueDemo() {
           </li>
           <li>
             配合{' '}
-            <code className="bg-gray-200 px-1 rounded">useMemo</code>
+            <code className="bg-muted px-1 rounded">useMemo</code>
             避免不必要的重复计算
           </li>
           <li>
             与{' '}
-            <code className="bg-gray-200 px-1 rounded">
+            <code className="bg-muted px-1 rounded">
               useTransition
             </code>{' '}
             不同：它不改变更新方式，而是延迟消费值的结果

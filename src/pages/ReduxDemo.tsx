@@ -14,7 +14,7 @@ function CounterSection() {
       <div className="flex gap-2 flex-wrap">
         <button className="bg-blue-500 text-white px-4 py-1 rounded" onClick={() => dispatch(increment())}>+1</button>
         <button className="bg-blue-500 text-white px-4 py-1 rounded" onClick={() => dispatch(decrement())}>-1</button>
-        <button className="bg-gray-400 text-white px-4 py-1 rounded" onClick={() => dispatch(reset())}>Reset</button>
+        <button className="bg-secondary text-secondary-foreground px-4 py-1 rounded" onClick={() => dispatch(reset())}>Reset</button>
         <button className="bg-blue-600 text-white px-4 py-1 rounded" onClick={() => dispatch(addByAmount(5))}>+5</button>
       </div>
     </div>
@@ -49,12 +49,12 @@ function TodoSection() {
         {list.map(t => (
           <li key={t.id} className="flex items-center gap-2">
             <input type="checkbox" checked={t.done} onChange={() => dispatch(toggleTodo(t.id))} />
-            <span className={t.done ? 'line-through text-gray-400' : ''}>{t.text}</span>
+            <span className={t.done ? 'line-through text-muted-foreground' : ''}>{t.text}</span>
             <button className="ml-auto text-red-500 text-sm" onClick={() => dispatch(removeTodo(t.id))}>Del</button>
           </li>
         ))}
       </ul>
-      {list.length === 0 && <p className="text-gray-400 text-sm">No todos yet</p>}
+      {list.length === 0 && <p className="text-muted-foreground text-sm">No todos yet</p>}
     </div>
   )
 }
@@ -63,14 +63,14 @@ export default function ReduxDemo() {
   return (
     <div className="p-8 max-w-2xl">
       <h1 className="text-2xl font-bold mb-2">Redux 状态管理 Demo</h1>
-      <p className="text-gray-500 mb-4">
+      <p className="text-muted-foreground mb-4">
         使用 Redux Toolkit 实现，展示 createSlice、configureStore、useSelector、useDispatch
       </p>
       <div className="flex flex-col gap-4">
         <CounterSection />
         <TodoSection />
       </div>
-      <div className="mt-4 p-4 bg-gray-100 rounded text-sm">
+      <div className="mt-4 p-4 bg-muted rounded text-sm">
         <p className="font-semibold mb-1">Redux 特点:</p>
         <ul className="list-disc pl-4 space-y-1">
           <li>单一 Store，通过 reducer 组合管理状态</li>

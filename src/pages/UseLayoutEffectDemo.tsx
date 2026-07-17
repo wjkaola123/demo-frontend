@@ -24,7 +24,7 @@ function ExecutionOrderDemo() {
       <h3 className="font-bold text-lg mb-1">执行时机对比</h3>
       <p className="text-sm mb-2">count: {count}</p>
       <button
-        className="px-3 py-1 rounded text-white text-sm cursor-pointer bg-gray-800 hover:bg-gray-700"
+        className="px-3 py-1 rounded text-background text-sm cursor-pointer bg-foreground hover:bg-foreground/80"
         onClick={() => setCount(c => c + 1)}
       >
         触发重渲染
@@ -33,7 +33,7 @@ function ExecutionOrderDemo() {
         <p ref={layoutRef} className="text-green-600">—</p>
         <p ref={effectRef} className="text-orange-600">—</p>
       </div>
-      <p className="text-xs text-gray-400 mt-2">
+      <p className="text-xs text-muted-foreground mt-2">
         同一组件内两个 hook 的执行顺序（打开 Console 看带色日志）
       </p>
     </div>
@@ -80,7 +80,7 @@ function ProgressBarDemo({ useLayout }: { useLayout: boolean }) {
       >
         开始填充
       </button>
-      <div className="w-full h-12 rounded bg-gray-200 overflow-hidden relative">
+      <div className="w-full h-12 rounded bg-muted overflow-hidden relative">
         <div
           ref={barRef}
           className="h-full rounded flex items-center justify-end pr-3 text-white text-sm font-bold"
@@ -91,7 +91,7 @@ function ProgressBarDemo({ useLayout }: { useLayout: boolean }) {
           }}
         />
       </div>
-      <p className="text-xs text-gray-500 leading-relaxed">
+      <p className="text-xs text-muted-foreground leading-relaxed">
         {useLayout
           ? 'useLayoutEffect 在绘制前已完成宽度变更 → 进度条直接显示满格，无填充过程'
           : 'useEffect 绘制后才变更宽度 → 从 0% 过渡到 100%，2s 动画肉眼可见'
@@ -202,7 +202,7 @@ export default function UseLayoutEffectDemo() {
 
       <section>
         <h2 className="text-lg font-semibold mb-2">DOM 渲染对比：进度条</h2>
-        <p className="text-xs text-gray-400 mb-3">
+        <p className="text-xs text-muted-foreground mb-3">
           注意：useLayoutEffect 侧明确禁用了 CSS transition。原因是 CSS 引擎在样式计算时检测的是<strong>属性值变化</strong>而非"是否已绘制"——即使 useLayoutEffect 在绘制前修正了属性，CSS transition 仍会启动动画。禁用 transition 恰是 useLayoutEffect 的正确语义：<strong>绘制前完成的变更不应产生视觉过渡</strong>。
         </p>
         <div className="flex gap-4">
@@ -213,7 +213,7 @@ export default function UseLayoutEffectDemo() {
 
       <section>
         <h2 className="text-lg font-semibold mb-3">DOM 渲染对比：Tooltip 定位</h2>
-        <p className="text-sm text-gray-500 mb-3">
+        <p className="text-sm text-muted-foreground mb-3">
           Tooltip 初始 fixed 定位在屏幕左上角 (0,0)，effect 读取按钮坐标后重新定位。
           右侧 useLayoutEffect 在绘制前修正位置，tooltip 始终在按钮下方。
           左侧 useEffect 绘制后才修正，可观察到 tooltip 从左上角滑到按钮下方的 0.35s 动画。
@@ -227,7 +227,7 @@ export default function UseLayoutEffectDemo() {
       <section className="border rounded-lg overflow-hidden">
         <table className="w-full text-sm">
           <thead>
-            <tr className="bg-gray-100">
+            <tr className="bg-muted">
               <th className="p-3 text-left">对比维度</th>
               <th className="p-3 text-left">useEffect</th>
               <th className="p-3 text-left">useLayoutEffect</th>

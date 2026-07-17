@@ -33,19 +33,19 @@ function DomSection() {
         <div className="flex gap-2">
           <button className="bg-green-500 text-white px-3 py-1 rounded" onClick={scrollToBox}>滚动到目标区域</button>
           <button className="bg-purple-500 text-white px-3 py-1 rounded" onClick={measureBox}>测量目标尺寸</button>
-          {dims.width > 0 && <span className="text-sm text-gray-500 self-center">{dims.width} x {dims.height} px</span>}
+          {dims.width > 0 && <span className="text-sm text-muted-foreground self-center">{dims.width} x {dims.height} px</span>}
         </div>
 
         <div className="h-48 overflow-y-auto border rounded p-2">
-          <div className="h-16 bg-gray-100 rounded flex items-center justify-center text-gray-400">上方占位区域</div>
-          <div ref={boxRef} className="h-16 my-2 bg-yellow-200 rounded flex items-center justify-center font-semibold border-2 border-yellow-500">
+          <div className="h-16 bg-muted rounded flex items-center justify-center text-muted-foreground">上方占位区域</div>
+          <div ref={boxRef} className="h-16 my-2 bg-primary/15 rounded flex items-center justify-center font-semibold border-2 border-yellow-500">
             目标区域 (ref 绑定)
           </div>
-          <div className="h-16 bg-gray-100 rounded flex items-center justify-center text-gray-400">下方占位区域</div>
+          <div className="h-16 bg-muted rounded flex items-center justify-center text-muted-foreground">下方占位区域</div>
         </div>
       </div>
 
-      <p className="text-gray-500 text-sm mt-3">
+      <p className="text-muted-foreground text-sm mt-3">
         inputRef 聚焦输入框, boxRef 滚动定位 + getBoundingClientRect 测量尺寸
       </p>
     </div>
@@ -82,13 +82,13 @@ function StorageSection() {
         <p className="text-2xl font-mono">count: {count}</p>
 
         <div className="space-y-1">
-          <button className="bg-gray-300 px-3 py-1 rounded text-sm" onClick={inspectRefs}>
+          <button className="bg-secondary px-3 py-1 rounded text-sm" onClick={inspectRefs}>
             读取 ref 中保存的值
           </button>
-          <div className="text-sm text-gray-500 space-y-0.5">
+          <div className="text-sm text-muted-foreground space-y-0.5">
             <p>组件渲染次数: {refInfo.renders}</p>
             <p>按钮点击次数: {refInfo.clicks}</p>
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-muted-foreground">
               ref 值随每次渲染/点击递增但不触发渲染 — 点击上方按钮手动读取
             </p>
           </div>
@@ -100,7 +100,7 @@ function StorageSection() {
         </div>
       </div>
 
-      <p className="text-gray-500 text-sm mt-3">
+      <p className="text-muted-foreground text-sm mt-3">
         renderCountRef 和 clickCountRef 持续累加, 但修改它们不触发重渲染; 多次点击 +1/-1 后按按钮可见
       </p>
     </div>
@@ -154,21 +154,21 @@ function TimerSection() {
       <div className="space-y-3">
         <p className="text-3xl font-mono">{elapsed}s</p>
         <p className="text-sm">
-          <button className="bg-gray-300 px-3 py-1 rounded text-sm" onClick={inspectTimer}>查看定时器 ID (ref 值)</button>
-          {timerSnap !== null && <span className="ml-2 text-gray-500 text-xs font-mono">{timerSnap}</span>}
+          <button className="bg-secondary px-3 py-1 rounded text-sm" onClick={inspectTimer}>查看定时器 ID (ref 值)</button>
+          {timerSnap !== null && <span className="ml-2 text-muted-foreground text-xs font-mono">{timerSnap}</span>}
         </p>
 
         <div className="flex gap-2">
           {!running ? (
             <button className="bg-red-500 text-white px-4 py-1 rounded" onClick={startTimer}>启动定时器</button>
           ) : (
-            <button className="bg-gray-500 text-white px-4 py-1 rounded" onClick={stopTimer}>停止定时器</button>
+            <button className="bg-secondary text-secondary-foreground px-4 py-1 rounded" onClick={stopTimer}>停止定时器</button>
           )}
-          <button className="bg-gray-400 text-white px-4 py-1 rounded" onClick={resetTimer}>重置</button>
+          <button className="bg-secondary text-secondary-foreground px-4 py-1 rounded" onClick={resetTimer}>重置</button>
         </div>
       </div>
 
-      <p className="text-gray-500 text-sm mt-3">
+      <p className="text-muted-foreground text-sm mt-3">
         intervalRef 持有 setInterval ID, 不参与渲染; unmount 时 useEffect cleanup 自动清除
       </p>
     </div>
@@ -179,7 +179,7 @@ export default function UseRefDemo() {
   return (
     <div className="p-8 max-w-2xl">
       <h1 className="text-2xl font-bold mb-2">useRef Demo</h1>
-      <p className="text-gray-500 mb-4">
+      <p className="text-muted-foreground mb-4">
         展示 useRef 的三种典型用法：操作 DOM、数据存储、管理定时器
       </p>
       <div className="flex flex-col gap-4">
@@ -187,7 +187,7 @@ export default function UseRefDemo() {
         <StorageSection />
         <TimerSection />
       </div>
-      <div className="mt-4 p-4 bg-gray-100 rounded text-sm">
+      <div className="mt-4 p-4 bg-muted rounded text-sm">
         <p className="font-semibold mb-1">useRef 特点:</p>
         <ul className="list-disc pl-4 space-y-1">
           <li>ref.current 的值变化不触发组件重新渲染 (区别于 useState)</li>

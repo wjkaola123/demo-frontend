@@ -30,7 +30,7 @@ function ProfileSection() {
       <h2 className="font-bold text-lg mb-2">Profile（嵌套对象）</h2>
       <div className="space-y-2 mb-3">
         <div>
-          <label className="text-sm text-gray-500">姓名</label>
+          <label className="text-sm text-muted-foreground">姓名</label>
           <input
             className="border rounded px-2 py-1 w-full"
             value={profile.name}
@@ -38,7 +38,7 @@ function ProfileSection() {
           />
         </div>
         <div>
-          <label className="text-sm text-gray-500">邮箱</label>
+          <label className="text-sm text-muted-foreground">邮箱</label>
           <input
             className="border rounded px-2 py-1 w-full"
             value={profile.email}
@@ -47,7 +47,7 @@ function ProfileSection() {
         </div>
         <div className="flex gap-2">
           <div className="flex-1">
-            <label className="text-sm text-gray-500">城市</label>
+            <label className="text-sm text-muted-foreground">城市</label>
             <input
               className="border rounded px-2 py-1 w-full"
               value={profile.address.city}
@@ -55,7 +55,7 @@ function ProfileSection() {
             />
           </div>
           <div className="w-28">
-            <label className="text-sm text-gray-500">邮编</label>
+            <label className="text-sm text-muted-foreground">邮编</label>
             <input
               className="border rounded px-2 py-1 w-full"
               value={profile.address.zip}
@@ -65,10 +65,10 @@ function ProfileSection() {
         </div>
       </div>
       <div>
-        <p className="text-sm text-gray-500 mb-1">爱好</p>
+        <p className="text-sm text-muted-foreground mb-1">爱好</p>
         <div className="flex flex-wrap gap-1 mb-2">
           {profile.hobbies.map((h, i) => (
-            <span key={i} className="bg-teal-100 text-teal-800 px-2 py-0.5 rounded text-sm flex items-center gap-1">
+              <span key={i} className="bg-primary/10 text-primary px-2 py-0.5 rounded text-sm flex items-center gap-1">
               {h}
               <button
                 className="text-teal-600 hover:text-red-500 text-xs leading-none"
@@ -87,8 +87,8 @@ function ProfileSection() {
         </button>
       </div>
       <details className="mt-3">
-        <summary className="text-xs text-gray-400 cursor-pointer">查看当前 state</summary>
-        <pre className="text-xs bg-gray-100 p-2 rounded mt-1 overflow-x-auto">{JSON.stringify(profile, null, 2)}</pre>
+        <summary className="text-xs text-muted-foreground cursor-pointer">查看当前 state</summary>
+        <pre className="text-xs bg-muted p-2 rounded mt-1 overflow-x-auto">{JSON.stringify(profile, null, 2)}</pre>
       </details>
     </div>
   )
@@ -130,7 +130,7 @@ function TodoSection() {
                 if (todo) todo.done = !todo.done
               })}
             />
-            <span className={t.done ? 'line-through text-gray-400' : ''}>{t.text}</span>
+            <span className={t.done ? 'line-through text-muted-foreground' : ''}>{t.text}</span>
             <button
               className="ml-auto text-red-500 text-sm"
               onClick={() => setTodos(draft => {
@@ -141,7 +141,7 @@ function TodoSection() {
           </li>
         ))}
       </ul>
-      {todos.length === 0 && <p className="text-gray-400 text-sm">No todos yet</p>}
+      {todos.length === 0 && <p className="text-muted-foreground text-sm">No todos yet</p>}
     </div>
   )
 }
@@ -150,14 +150,14 @@ export default function ImmerDemo() {
   return (
     <div className="p-8 max-w-2xl">
       <h1 className="text-2xl font-bold mb-2">Immer useImmer Demo</h1>
-      <p className="text-gray-500 mb-4">
+      <p className="text-muted-foreground mb-4">
         通过 useImmer 以可变语法操作不可变状态，告别深拷贝和冗长的 spread
       </p>
       <div className="flex flex-col gap-4">
         <ProfileSection />
         <TodoSection />
       </div>
-      <div className="mt-4 p-4 bg-gray-100 rounded text-sm">
+      <div className="mt-4 p-4 bg-muted rounded text-sm">
         <p className="font-semibold mb-1">Immer 特点:</p>
         <ul className="list-disc pl-4 space-y-1">
           <li>在 draft 上直接使用可变语法（赋值、push、splice 等）</li>
